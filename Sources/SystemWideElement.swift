@@ -15,4 +15,8 @@ open class SystemWideElement: UIElement {
     open override func elementAtPosition(_ x: Float, _ y: Float) throws(AXError) -> UIElement? {
         return try super.elementAtPosition(x, y)
     }
+
+    open override func elementAtPosition(_ position: CGPoint) throws(AXError) -> UIElement? {
+        return try super.elementAtPosition(position)
+    }
 }
