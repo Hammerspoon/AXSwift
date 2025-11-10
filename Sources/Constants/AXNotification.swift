@@ -6,7 +6,7 @@ extension UIElement {
     /// Provides all known possible notifications you can subscribe to with `Observer`.
     /// - seeAlso: [Notificatons](https://developer.apple.com/library/mac/documentation/AppKit/Reference/NSAccessibility_Protocol_Reference/index.html#//apple_ref/c/data/NSAccessibilityAnnouncementRequestedNotification)
     public struct AXNotification: RawRepresentable, Hashable, Sendable, CaseIterable {
-        public static var allCases: [UIElement.AXNotification] = [
+        public static let allCases: [UIElement.AXNotification] = [
             .mainWindowChanged,
             .focusedWindowChanged,
             .focusedUIElementChanged,
