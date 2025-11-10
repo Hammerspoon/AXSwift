@@ -5,7 +5,45 @@ public typealias AXNotification = UIElement.AXNotification
 extension UIElement {
     /// Provides all known possible notifications you can subscribe to with `Observer`.
     /// - seeAlso: [Notificatons](https://developer.apple.com/library/mac/documentation/AppKit/Reference/NSAccessibility_Protocol_Reference/index.html#//apple_ref/c/data/NSAccessibilityAnnouncementRequestedNotification)
-    public struct AXNotification: RawRepresentable, Hashable, Sendable {
+    public struct AXNotification: RawRepresentable, Hashable, Sendable, CaseIterable {
+        public static var allCases: [UIElement.AXNotification] = [
+            .mainWindowChanged,
+            .focusedWindowChanged,
+            .focusedUIElementChanged,
+            .focusedTabChanged,
+            .applicationActivated,
+            .applicationDeactivated,
+            .applicationHidden,
+            .applicationShown,
+            .windowCreated,
+            .windowMoved,
+            .windowResized,
+            .windowMiniaturized,
+            .windowDeminiaturized,
+            .drawerCreated,
+            .sheetCreated,
+            .uiElementDestroyed,
+            .valueChanged,
+            .titleChanged,
+            .resized,
+            .moved,
+            .created,
+            .layoutChanged,
+            .helpTagCreated,
+            .selectedTextChanged,
+            .rowCountChanged,
+            .selectedChildrenChanged,
+            .selectedRowsChanged,
+            .selectedColumnsChanged,
+            .loadComplete,
+            .rowExpanded,
+            .rowCollapsed,
+            .selectedCellsChanged,
+            .unitsChanged,
+            .selectedChildrenMoved,
+            .announcementRequested
+        ]
+
         public let rawValue: String
         public var rawCFStringValue: CFString { rawValue as CFString }
         
