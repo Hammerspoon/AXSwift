@@ -709,7 +709,7 @@ public func ==(lhs: UIElement, rhs: UIElement) -> Bool {
 
 extension UIElement: Hashable {
     public func hash(into hasher: inout Hasher) {
-        let hashCode = CFHash(self)
+        let hashCode = CFHash(self.element)
         hasher.combine(hashCode)
     }
 }
