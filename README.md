@@ -1,5 +1,21 @@
 # AXSwift
 
+> [!IMPORTANT]
+> This is [Hammerspoon](https://github.com/Hammerspoon/Hammerspoon2)'s fork of
+> [AXSwift](https://github.com/tmandry/AXSwift) (by way of
+> [mredig/AXSwift](https://github.com/mredig/AXSwift)). It carries changes that exist to suit
+> Hammerspoon and aren't expected to go upstream.
+
+## Divergences from upstream
+
+- **Request gate** (`UIElement.requestGate`, in `Sources/RequestGate.swift`): an optional closure
+  consulted before every request a `UIElement`, `Application` or `Observer` sends. It's given the
+  target application's process ID and returns `nil` to let the request through, or the `AXError`
+  to throw instead. Hammerspoon uses it to refuse accessibility requests to itself made off the
+  main thread: the system answers an app's requests to itself by calling the app's own
+  `NSAccessibility` code directly, on the requesting thread, so those would run AppKit and SwiftUI
+  code on a background thread. With no gate set (the default), AXSwift behaves as upstream does.
+
 [![Version](https://cocoapod-badges.herokuapp.com/v/AXSwift/badge.svg)](https://cocoapods.org/pods/AXSwift)
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 

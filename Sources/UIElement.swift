@@ -87,6 +87,7 @@ open class UIElement {
     ///
     /// Does not include parameterized attributes.
     open func attributes() throws(AXError) -> [Attribute] {
+        try checkRequestGate()
         var names: CFArray!
         let error = AXUIElementCopyAttributeNames(element, &names)
 
@@ -112,6 +113,7 @@ open class UIElement {
     /// errors). However, if you'd like to specifically test an attribute is actually supported, you
     /// can use this method.
     open func attributeIsSupported(_ attribute: Attribute) throws(AXError) -> Bool {
+        try checkRequestGate()
         // Ask to copy 0 values, since we are only interested in the return code.
         var value: CFArray?
         let error = AXUIElementCopyAttributeValues(element, attribute.rawCFStringValue, 0, 0, &value)
@@ -133,6 +135,7 @@ open class UIElement {
 
     /// Returns whether `attribute` is writeable.
     open func attributeIsSettable(_ attribute: Attribute) throws(AXError) -> Bool {
+        try checkRequestGate()
         var settable: DarwinBoolean = false
         let error = AXUIElementIsAttributeSettable(element, attribute.rawCFStringValue, &settable)
 
@@ -157,6 +160,7 @@ open class UIElement {
     /// - warning: This method force-casts the attribute to the desired type, which will abort if
     ///            the cast fails. If you want to check the return type, ask for Any.
     open func attribute<T>(_ attribute: Attribute) throws(AXError) -> T? {
+        try checkRequestGate()
         var value: AnyObject?
         let error = AXUIElementCopyAttributeValue(element, attribute.rawCFStringValue, &value)
 
@@ -189,6 +193,7 @@ open class UIElement {
     ///   - `Error.IllegalArgument`: `value` is an illegal value.
     ///   - `Error.Failure`: A temporary failure occurred.
     open func setAttribute(_ attribute: Attribute, value: Any) throws(AXError) {
+        try checkRequestGate()
         let error = AXUIElementSetAttributeValue(element, attribute.rawCFStringValue, packAXValue(value))
 
         guard error == .success else {
@@ -219,6 +224,7 @@ open class UIElement {
 
     // Helper: Gets list of values
     fileprivate func fetchMultiAttrValues(_ attributes: [Attribute]) throws(AXError) -> [AnyObject] {
+        try checkRequestGate()
         var valuesCF: CFArray?
         let error = AXUIElementCopyMultipleAttributeValues(
             element,
@@ -303,6 +309,7 @@ open class UIElement {
     /// - throws: `Error.IllegalArgument` if the attribute isn't an array.
     open func valuesForAttribute<T: AnyObject>
     (_ attribute: Attribute, startAtIndex index: Int, maxValues: Int) throws(AXError) -> [T]? {
+        try checkRequestGate()
         var values: CFArray?
         let error = AXUIElementCopyAttributeValues(
             element, attribute.rawCFStringValue, index, maxValues, &values
@@ -325,6 +332,7 @@ open class UIElement {
     /// Returns the number of values an array attribute has.
     /// - returns: The number of values, or `nil` if `attribute` isn't an array (or doesn't exist).
     open func valueCountForAttribute(_ attribute: Attribute) throws(AXError) -> Int? {
+        try checkRequestGate()
         var count: Int = 0
         let error = AXUIElementGetAttributeValueCount(element, attribute.rawCFStringValue, &count)
 
@@ -347,6 +355,7 @@ open class UIElement {
     /// Parameterized attributes are attributes that require parameters to retrieve. For example,
     /// the cell contents of a spreadsheet might require the row and column of the cell you want.
     open func parameterizedAttributes() throws(AXError) -> [Attribute] {
+        try checkRequestGate()
         var names: CFArray?
         let error = AXUIElementCopyParameterizedAttributeNames(element, &names)
 
@@ -375,6 +384,7 @@ open class UIElement {
     /// [NSAccessibility Informal Protocol Reference](https://developer.apple.com/library/mac/documentation/Cocoa/Reference/ApplicationKit/Protocols/NSAccessibility_Protocol/)
     /// for more info.
     open func parameterizedAttribute<T, U>(_ attribute: Attribute, param: U) throws(AXError) -> T? {
+        try checkRequestGate()
         var value: AnyObject?
         let error = AXUIElementCopyParameterizedAttributeValue(
             element, attribute.rawCFStringValue, param as AnyObject, &value
@@ -463,6 +473,7 @@ open class UIElement {
 
     /// Returns a list of actions that can be performed on the element.
     open func actions() throws(AXError) -> [Action] {
+        try checkRequestGate()
         var names: CFArray?
         let error = AXUIElementCopyActionNames(element, &names)
 
@@ -490,6 +501,7 @@ open class UIElement {
 
     /// Returns the human-readable description of `action`.
     open func actionDescription(_ action: Action) throws(AXError) -> String? {
+        try checkRequestGate()
         var description: CFString?
         let error = AXUIElementCopyActionDescription(element, action.rawCFStringValue, &description)
 
@@ -512,6 +524,7 @@ open class UIElement {
     ///         performed.
     /// - throws: `Error.ActionUnsupported` if the action is not supported.
     open func performAction(_ action: Action) throws(AXError) {
+        try checkRequestGate()
         let error = AXUIElementPerformAction(element, action.rawCFStringValue)
 
         guard error == .success else {
@@ -557,6 +570,7 @@ open class UIElement {
     // Gets the element at the specified coordinates.
     // This can only be called on applications and the system-wide element, so it is internal here.
     func elementAtPosition(_ x: Float, _ y: Float) throws(AXError) -> UIElement? {
+        try checkRequestGate()
         var result: AXUIElement?
         let error = AXUIElementCopyElementAtPosition(element, x, y, &result)
 

@@ -18,6 +18,7 @@
 		2FF560E61FF0C039001AF272 /* AXSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF560DD1FF0C039001AF272 /* AXSwift.swift */; };
 		2FF560E81FF0C039001AF272 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF560DF1FF0C039001AF272 /* Error.swift */; };
 		2FF560EA1FF0C039001AF272 /* Observer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF560E11FF0C039001AF272 /* Observer.swift */; };
+		4F0A5E012F0C0001000AB001 /* RequestGate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F0A5E022F0C0001000AB001 /* RequestGate.swift */; };
 		2FF560EB1FF0C039001AF272 /* SystemWideElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF560E21FF0C039001AF272 /* SystemWideElement.swift */; };
 		2FF560EC1FF0C039001AF272 /* UIElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF560E31FF0C039001AF272 /* UIElement.swift */; };
 		4F463E982EA7A5F0000A2135 /* Subrole.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F463E962EA7A5F0000A2135 /* Subrole.swift */; };
@@ -63,6 +64,7 @@
 		2FF560DF1FF0C039001AF272 /* Error.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
 		2FF560E01FF0C039001AF272 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2FF560E11FF0C039001AF272 /* Observer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Observer.swift; sourceTree = "<group>"; };
+		4F0A5E022F0C0001000AB001 /* RequestGate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestGate.swift; sourceTree = "<group>"; };
 		2FF560E21FF0C039001AF272 /* SystemWideElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SystemWideElement.swift; sourceTree = "<group>"; };
 		2FF560E31FF0C039001AF272 /* UIElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIElement.swift; sourceTree = "<group>"; };
 		4F463E912EA7A5F0000A2135 /* Action.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Action.swift; sourceTree = "<group>"; };
@@ -145,6 +147,7 @@
 				2FF560DF1FF0C039001AF272 /* Error.swift */,
 				2FF560E01FF0C039001AF272 /* Info.plist */,
 				2FF560E11FF0C039001AF272 /* Observer.swift */,
+				4F0A5E022F0C0001000AB001 /* RequestGate.swift */,
 				2FF560E21FF0C039001AF272 /* SystemWideElement.swift */,
 				2FF560E31FF0C039001AF272 /* UIElement.swift */,
 			);
@@ -314,6 +317,7 @@
 				2FF560EC1FF0C039001AF272 /* UIElement.swift in Sources */,
 				2FF560E81FF0C039001AF272 /* Error.swift in Sources */,
 				2FF560EA1FF0C039001AF272 /* Observer.swift in Sources */,
+				4F0A5E012F0C0001000AB001 /* RequestGate.swift in Sources */,
 				2FF560E61FF0C039001AF272 /* AXSwift.swift in Sources */,
 				4F463E982EA7A5F0000A2135 /* Subrole.swift in Sources */,
 				4F463E992EA7A5F0000A2135 /* AXNotification.swift in Sources */,
